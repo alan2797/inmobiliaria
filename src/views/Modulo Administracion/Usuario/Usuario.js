@@ -15,7 +15,7 @@ import { useStyles } from "./style/style";
 
 const Usuario = ({ history }) => {
   const className = useStyles();
-  const [usuarios, setData] = useState([]);
+  const [usuarios, setData] = useState(null);
   const { showSnack } = useContext(MessageContext);
   const [ConfirmDialog, showDialog, closeDialog] = useConfirmDialog(
     "Eliminar",
@@ -25,10 +25,10 @@ const Usuario = ({ history }) => {
   const fetchData = async () => {
     try {
       const result = await RequestServer.GET(
-        "http://localhost:8000/api/web/usuarios"
+        "http://localhost:5000/api/usuario"
       );
       console.log(result.data);
-      setData(result.data);
+      setData(result.data.data);
     } catch (error) {
       console.log("fetchData", error);
       showSnack(error.message, error.type);
@@ -91,19 +91,14 @@ const Usuario = ({ history }) => {
       <Box mt={2}>
         <EnhancedTable
           headTable={headCells}
-          rowIdName={"idusuario"}
+          rowIdName={"id"}
           dataTable={usuarios}
           titleTable={"Lista de Usuarios"}
           toolBarPresent={isToolbarPresent(toolBar)}
           toolBar={toolBar}
           transformColumn={{
-            created_at: (item) => {
-              const timeStamp = new Date(item);
-              return (
-                timeStamp.toLocaleDateString() +
-                "  " +
-                timeStamp.toLocaleTimeString()
-              );
+            personal: (item) => {
+              return item.cargo;
             },
           }}
           reloadCallback={() => {

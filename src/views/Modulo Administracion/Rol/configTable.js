@@ -12,9 +12,9 @@ export const headCells = [
     label: "Nombre",
   },
   {
-    key: "created_at",
+    key: "descripcion",
     numeric: false,
     disablePadding: false,
-    label: "Día de registro",
+    label: "Descripción",
   },
 ];

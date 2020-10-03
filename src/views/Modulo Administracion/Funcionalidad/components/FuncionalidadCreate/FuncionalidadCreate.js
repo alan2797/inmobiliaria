@@ -58,7 +58,7 @@ const FuncionalidadCreate = (props) => {
     console.log(formState.values);
     try {
       const rsp = await RequestServer.POST(
-        "http://localhost:8000/api/web/roles",
+        "http://localhost:5000/api/funcionalidad/create",
         formState.values
       );
 
@@ -102,7 +102,7 @@ const FuncionalidadCreate = (props) => {
       <Card className={className.root} style={{ marginBottom: 10 }}>
         <CardHeader title="Crear Funcionalidades" />
         <CardContent>
-          <Button
+          {/*<Button
             color="primary"
             className={className.button}
             size="large"
@@ -110,8 +110,27 @@ const FuncionalidadCreate = (props) => {
             title={"Nuevo"}
             disabled={tree.length > 0}
             onClick={() => setOpenModal(true)}
-          />
-          <div style={{ height: 400 }}>
+          />*/}
+          {Object.keys(formSchema).map((key) => (
+            <FormInput
+              key={key}
+              name={key}
+              label={formSchema[key].label}
+              value={formState.values[key]}
+              helperText={
+                hasError(key)
+                  ? formState.errors[key][0]
+                  : formSchema[key].helperText
+              }
+              error={hasError(key)}
+              onChange={handleChange}
+              type={formSchema[key].type}
+              shrink={formSchema[key].shrink}
+              opciones={formSchema[key].opciones}
+              select={formSchema[key].select}
+            />
+          ))}
+          {/*<div style={{ height: 400 }}>
             <SortableTree
               treeData={tree}
               onChange={(treeData) => setTree(treeData)}
@@ -141,19 +160,20 @@ const FuncionalidadCreate = (props) => {
                 ],
               })}
             />
-          </div>
+          </div>*/}
         </CardContent>
       </Card>
 
-      {/*<Button
+      <Button
         color="primary"
         className={className.button}
         disabled={!formState.isValid}
         size="large"
-        type="submit"
+        //type="submit"
+        onClick={handleSubmit}
         variant="contained"
         title={SAVE}
-      />*/}
+      />
 
       <Button
         color="inherit"

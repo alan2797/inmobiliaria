@@ -29,7 +29,9 @@ const Personal = ({ history }) => {
 
   const fetchData = async () => {
     try {
-      const result = await RequestServer.GET(API.PERSONAL.LISTAR);
+      const result = await RequestServer.GET(
+        "http://localhost:5000/api/personal"
+      );
       console.log(result);
       setData(result.data.data);
     } catch (error) {
@@ -94,28 +96,12 @@ const Personal = ({ history }) => {
       <Box mt={2}>
         <EnhancedTable
           headTable={headCells}
-          rowIdName={"idpersonal"}
+          rowIdName={"id"}
           dataTable={personales}
           titleTable={"Lista de Personal"}
           toolBarPresent={isToolbarPresent(toolBar)}
           toolBar={toolBar}
-          transformColumn={{
-            tipo_personal: (item) => {
-              return item.nombre;
-            },
-            created_at: (item) => {
-              if (item == null) {
-                return "";
-              } else {
-                const timeStamp = new Date(item);
-                return (
-                  timeStamp.toLocaleDateString() +
-                  "  " +
-                  timeStamp.toLocaleTimeString()
-                );
-              }
-            },
-          }}
+          //transformColumn={{}}
           reloadCallback={() => {
             //setData(null);
             setTimeout(fetchData, 1000);

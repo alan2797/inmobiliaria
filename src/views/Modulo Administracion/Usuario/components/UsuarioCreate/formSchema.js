@@ -1,16 +1,24 @@
 const formSchema = {
-  email: {
-    label: "Correo *",
-    type: "email",
+  username: {
+    label: "Usuario *",
+    type: "text",
   },
   password: {
     label: "Contraseña *",
     type: "text",
   },
-  idpersonal: {
+  personalId: {
     label: "Personal *",
     type: "select",
-    helperText: "Personal de la panaderia que aun no tiene acceso al sistema",
+    helperText:
+      "Personal de la inmobiliaria que aun no tiene acceso al sistema",
+    select: true,
+    opciones: [],
+  },
+  rolId: {
+    label: "Rol *",
+    type: "select",
+    helperText: "Rol que tendra en el sistema",
     select: true,
     opciones: [],
   },

@@ -29,10 +29,4 @@ export const headCells = [
     disablePadding: false,
     label: "Tipo ",
   },
-  {
-    key: "created_at",
-    numeric: false,
-    disablePadding: false,
-    label: "Día de registro",
-  },
 ];

@@ -14,7 +14,10 @@ const expireAt = 60 * 24;
 class AuthService {
   static async doLogin(credencial: Credencial) {
     try {
-      const response = await Axios.post(API.LOGIN, credencial);
+      const response = await Axios.post(
+        "http://localhost:5000/api/usuario/login",
+        credencial
+      );
       return response;
     } catch (error) {
       if (!isNetworkError(error)) {

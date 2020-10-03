@@ -85,18 +85,23 @@ const SignIn = (props) => {
         rol: "Administrador",
       },
     };
-    AuthService.handleLoginSuccess(data, remember);
-    localStorage.setItem("permisos", JSON.stringify(permisos));
-    history.push(ROUTE_PAGE.HOME);
 
-    /* try {
+    try {
       const rsp = await AuthService.doLogin(formState.values);
       if (rsp.status === HTTP_CODE.OKEY) {
+        console.log(rsp.data.data);
+        rsp.data.data.access_token = "ksajns8781";
+        AuthService.handleLoginSuccess(rsp.data.data, remember);
+        localStorage.setItem(
+          "permisos",
+          JSON.stringify(rsp.data.data.funcionalidades)
+        );
+        localStorage.setItem("usuario", JSON.stringify(rsp.data.data.usuario));
         history.push(ROUTE_PAGE.HOME);
       }
     } catch (error) {
       showSnack(error.message, error.type);
-    }*/
+    }
   };
 
   const hasError = (field) =>

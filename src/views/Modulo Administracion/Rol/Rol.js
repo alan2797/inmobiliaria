@@ -16,7 +16,7 @@ import { useStyles } from "./style/style";
 
 const Rol = ({ history }) => {
   const className = useStyles();
-  const [rol, setData] = useState(rolData);
+  const [rol, setData] = useState([]);
   const { showSnack } = useContext(MessageContext);
   const [ConfirmDialog, showDialog, closeDialog] = useConfirmDialog(
     "Eliminar",
@@ -25,7 +25,7 @@ const Rol = ({ history }) => {
 
   const fetchData = async () => {
     try {
-      const result = await RequestServer.GET(API.INSUMO.LISTAR);
+      const result = await RequestServer.GET("http://localhost:5000/api/rol");
       setData(result.data.data);
     } catch (error) {
       console.log("fetchData", error);
@@ -34,7 +34,7 @@ const Rol = ({ history }) => {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

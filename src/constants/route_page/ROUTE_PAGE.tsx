@@ -59,6 +59,19 @@ const ROUTE_PAGE = {
     LISTAR: "/compra/listar",
     CREAR: "/compra/crear",
   },
+  PROPIETARIO: {
+    LISTAR: "/propietario/listar",
+    CREAR: "/propietario/crear",
+  },
+  INMUEBLE: {
+    LISTAR: "/inmueble/listar",
+    CREAR: "/inmueble/crear",
+  },
+  CONTRATO:{
+    LISTAR: "/contrato/listar",
+    CREAR: "/contrato/crear",
+
+  }
 };
 
 const ROUTE_PARAM = (route, param, baseUrl = "") => {

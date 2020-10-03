@@ -1,7 +1,7 @@
 import { V_REQUIRED, V_NUMERIC } from "constants/index";
 
 const schema = {
-  email: {
+  username: {
     presence: { allowEmpty: false, message: V_REQUIRED },
     length: {
       maximum: 50,
@@ -13,7 +13,10 @@ const schema = {
       maximum: 50,
     },
   },
-  idpersonal: {
+  personalId: {
+    presence: { allowEmpty: false, message: V_REQUIRED },
+  },
+  rolId: {
     presence: { allowEmpty: false, message: V_REQUIRED },
   },
 };

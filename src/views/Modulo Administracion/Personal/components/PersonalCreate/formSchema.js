@@ -23,38 +23,50 @@ const formSchema = {
     //helperText: "texto de ayuda",
     type: "text",
   },
-  tipo_personal: {
-    label: "Tipo Personal *",
-    helperText: "Tipo personal de la panaderia",
-    type: "select",
-    select: true,
-    opciones: [],
-  },
-};
-
-const formSchemaUsuario = {
-  email: {
+  correo: {
     label: "Correo *",
+    //helperText: "texto de ayuda",
     type: "email",
   },
-  password: {
-    label: "Contraseña *",
-    helperText: "por defecto el carnet de identidad",
-    type: "text",
-  },
-  rol: {
-    label: "Rol *",
-    helperText: "rol que el usuario tendra en el sistema",
+  cargo: {
+    label: "Cargo Personal *",
+    helperText: "Cargo personal de la inmobiliaria",
     type: "select",
     select: true,
     opciones: [
       {
-        id: 1,
+        id: "Administrador",
         nombre: "Administrador",
       },
-      { id: 2, nombre: "Vendedor" },
-      { id: 3, nombre: "Repartidor" },
+      {
+        id: "Secretaria",
+        nombre: "Secretaria",
+      },
+      {
+        id: "Agente",
+        nombre: "Agente",
+      },
     ],
+  },
+};
+
+const formSchemaUsuario = {
+  username: {
+    label: "Username *",
+    type: "text",
+  },
+  password: {
+    label: "Contraseña *",
+    helperText:
+      "por defecto el carnet de identidad, el usuario debera cambiarlo obligatoriamente",
+    type: "text",
+  },
+  rolId: {
+    label: "Rol *",
+    helperText: "rol que el usuario tendra en el sistema",
+    type: "select",
+    select: true,
+    opciones: [],
   },
 };
 export { formSchema, formSchemaUsuario };

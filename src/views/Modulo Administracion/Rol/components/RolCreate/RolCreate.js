@@ -78,20 +78,22 @@ const PersonalCreate = (props) => {
   const className = useStyles();
   const [formState, handleChange, hasError] = useForm(schemaValidate);
   const { showSnack } = useContext(MessageContext);
-  const [tree, setTree] = useState(treeData);
+  const [tree, setTree] = useState([]);
 
-  const getTipoPersonal = async () => {
-    /*try {
-      const result = await RequestServer.GET(API.UNIDAD_MEDIDA.LISTAR);
+  const getFuncionalidaes = async () => {
+    try {
+      const result = await RequestServer.GET(
+        "http://localhost:5000/api/funcionalidad"
+      );
       console.log(result.data);
-      setUnidades(result.data.data);
+      setTree(result.data.data);
     } catch (error) {
       showSnack(error.message, error.type);
-    }*/
+    }
   };
 
   useEffect(() => {
-    getTipoPersonal();
+    getFuncionalidaes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -102,24 +104,8 @@ const PersonalCreate = (props) => {
       treeData: tree,
       getNodeKey: (node) => node.id,
     });
-
-    const testData = [
-      { id: 1, title: "Chicken", parent: null },
-      { id: 2, title: "Egg", parent: 1 },
-    ];
-    const tData = getTreeFromFlatData({
-      flatData: testData,
-      getKey: (node) => node.id,
-      getParentKey: (node) => node.parent,
-      rootKey: null,
-    });
     console.log(flatData);
-    console.log(tData);
-    const flatDataPrueba = getFlatDataFromTree({
-      treeData: tData,
-      getNodeKey: (node) => node.id,
-    });
-    console.log(flatDataPrueba);
+
     /*try {
       const rsp = await RequestServer.POST(
         "http://localhost:8000/api/web/roles",
@@ -132,9 +118,45 @@ const PersonalCreate = (props) => {
       showSnack(error.message, error.type);
     }*/
   };
+  const handleSubmit2 = async () => {
+    console.log(formState.values);
+    const body = {
+      rol: formState.values,
+      funcionalidades: tree,
+    };
+    console.log(body);
+    try {
+      const rsp = await RequestServer.POST(
+        "http://localhost:5000/api/rol/create",
+        body
+      );
+
+      showSnack(rsp.data.message, "success");
+      history.goBack();
+    } catch (error) {
+      showSnack(error.message, error.type);
+    }
+  };
   const handleChangeSwitch = (nodo, path) => {
     console.log(nodo);
     console.log(path);
+    var newTree = [...tree];
+    console.log(newTree);
+    for (let i = 0; i < newTree.length; i++) {
+      let item = newTree[i];
+      console.log(item);
+      if (item.id === nodo.id) {
+        let propVisible = typeof nodo.visible === "undefined" ? false : true;
+        if (propVisible) {
+          item.visible = !nodo.visible;
+        } else {
+          item.visible = true;
+        }
+        break;
+      }
+    }
+
+    setTree(newTree);
   };
   return (
     <div className={className.root}>
@@ -189,7 +211,7 @@ const PersonalCreate = (props) => {
             className={className.button}
             disabled={!formState.isValid}
             size="large"
-            onClick={handleSubmit}
+            onClick={handleSubmit2}
             variant="contained"
             title={SAVE}
           />

@@ -14,33 +14,53 @@ const UsuarioCreate = (props) => {
   const { history } = props;
   const className = useStyles();
   const [peronsales, setPeronsales] = useState([]);
+  const [rol, setRol] = useState([]);
   const [formState, handleChange, hasError] = useForm(schemaValidate);
   const { showSnack } = useContext(MessageContext);
 
   const getPersonal = async () => {
     try {
       const result = await RequestServer.GET(
-        "http://localhost:8000/api/web/personal"
+        "http://localhost:5000/api/personal/sinAcceso"
       );
       var array = [];
       for (let i = 0; i < result.data.data.length; i++) {
         let item = result.data.data[i];
         let data = {
-          id: item.idpersonal,
+          id: item.id,
           nombre: item.nombre,
         };
         array.push(data);
       }
       console.log(result.data);
-      formSchema.idpersonal.opciones = array;
+      formSchema.personalId.opciones = array;
       setPeronsales(array);
     } catch (error) {
       showSnack(error.message, error.type);
     }
   };
-
+  const getRoles = async () => {
+    try {
+      const result = await RequestServer.GET("http://localhost:5000/api/rol");
+      var array = [];
+      for (let i = 0; i < result.data.data.length; i++) {
+        let item = result.data.data[i];
+        let data = {
+          id: item.id,
+          nombre: item.nombre,
+        };
+        array.push(data);
+      }
+      console.log(result.data);
+      formSchema.rolId.opciones = array;
+      setRol(array);
+    } catch (error) {
+      showSnack(error.message, error.type);
+    }
+  };
   useEffect(() => {
     getPersonal();
+    getRoles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -50,7 +70,7 @@ const UsuarioCreate = (props) => {
     // formState.values.unidad_id = unidad.id;
     try {
       const rsp = await RequestServer.POST(
-        "http://localhost:8000/api/web/usuarios",
+        "http://localhost:5000/api/usuario/create",
         formState.values
       );
       showSnack(rsp.data.message, "success");
@@ -65,45 +85,44 @@ const UsuarioCreate = (props) => {
       <Card className={className.root}>
         <CardHeader title="Registro de Usuario" />
         <CardContent>
-          <form onSubmit={handleSubmit}>
-            {Object.keys(formSchema).map((key) => (
-              <FormInput
-                key={key}
-                name={key}
-                label={formSchema[key].label}
-                value={formState.values[key]}
-                helperText={
-                  hasError(key)
-                    ? formState.errors[key][0]
-                    : formSchema[key].helperText
-                }
-                error={hasError(key)}
-                onChange={handleChange}
-                type={formSchema[key].type}
-                shrink={formSchema[key].shrink}
-                opciones={formSchema[key].opciones}
-                select={formSchema[key].select}
-              />
-            ))}
-
-            <Button
-              color="primary"
-              className={className.button}
-              disabled={!formState.isValid}
-              size="large"
-              type="submit"
-              variant="contained"
-              title={SAVE}
+          {Object.keys(formSchema).map((key) => (
+            <FormInput
+              key={key}
+              name={key}
+              label={formSchema[key].label}
+              value={formState.values[key]}
+              helperText={
+                hasError(key)
+                  ? formState.errors[key][0]
+                  : formSchema[key].helperText
+              }
+              error={hasError(key)}
+              onChange={handleChange}
+              type={formSchema[key].type}
+              shrink={formSchema[key].shrink}
+              opciones={formSchema[key].opciones}
+              select={formSchema[key].select}
             />
+          ))}
 
-            <Button
-              color="inherit"
-              size="large"
-              variant="contained"
-              onClick={() => history.goBack()}
-              title={BACK}
-            />
-          </form>
+          <Button
+            color="primary"
+            className={className.button}
+            disabled={!formState.isValid}
+            size="large"
+            //type="submit"
+            onClick={handleSubmit}
+            variant="contained"
+            title={SAVE}
+          />
+
+          <Button
+            color="inherit"
+            size="large"
+            variant="contained"
+            onClick={() => history.goBack()}
+            title={BACK}
+          />
         </CardContent>
       </Card>
     </div>

@@ -1,6 +1,6 @@
 export const headCells = [
   {
-    key: "idpersonal",
+    key: "id",
     numeric: false,
     disablePadding: false,
     label: "#",
@@ -24,21 +24,27 @@ export const headCells = [
     label: "Carnet de Identidad",
   },
   {
-    key: "telefono_celular",
+    key: "direccion",
+    numeric: false,
+    disablePadding: false,
+    label: "Direccion",
+  },
+  {
+    key: "telefono",
     numeric: false,
     disablePadding: false,
     label: "Telefono - Celular",
   },
   {
-    key: "tipo_personal",
+    key: "cargo",
     numeric: false,
     disablePadding: false,
     label: "Tipo Personal",
   },
   {
-    key: "created_at",
+    key: "correo",
     numeric: false,
     disablePadding: false,
-    label: "Día de registro",
+    label: "Correo",
   },
 ];

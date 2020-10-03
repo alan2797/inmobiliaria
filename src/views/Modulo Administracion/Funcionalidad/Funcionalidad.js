@@ -16,7 +16,7 @@ import { useStyles } from "./style/style";
 
 const Funcionalidad = ({ history }) => {
   const className = useStyles();
-  const [funcionalidad, setData] = useState(funcionalidadData);
+  const [funcionalidad, setData] = useState(null);
   const { showSnack } = useContext(MessageContext);
   const [ConfirmDialog, showDialog, closeDialog] = useConfirmDialog(
     "Eliminar",
@@ -25,7 +25,9 @@ const Funcionalidad = ({ history }) => {
 
   const fetchData = async () => {
     try {
-      const result = await RequestServer.GET(API.INSUMO.LISTAR);
+      const result = await RequestServer.GET(
+        "http://localhost:5000/api/funcionalidad"
+      );
       setData(result.data.data);
     } catch (error) {
       console.log("fetchData", error);
@@ -34,7 +36,7 @@ const Funcionalidad = ({ history }) => {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -94,7 +96,7 @@ const Funcionalidad = ({ history }) => {
           titleTable={"Lista de Funcionalidades"}
           toolBarPresent={isToolbarPresent(toolBar)}
           toolBar={toolBar}
-          transformColumn={{
+          /* transformColumn={{
             created_at: (item) => {
               const timeStamp = new Date(item);
               return (
@@ -103,7 +105,7 @@ const Funcionalidad = ({ history }) => {
                 timeStamp.toLocaleTimeString()
               );
             },
-          }}
+          }}*/
           reloadCallback={() => {
             //setData(null);
             setTimeout(fetchData, 1000);

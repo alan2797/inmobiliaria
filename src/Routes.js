@@ -32,17 +32,17 @@ function getRoute() {
 
     if (menu.children != null) {
       menu.children.forEach((r, index) => {
-        if (havePermision(r.id)) {
-          router.push(
-            <ProtectedRoute
-              key={index + "as"}
-              component={r.component}
-              exact
-              layout={MainLayout}
-              path={r.href}
-            />
-          );
-        }
+        // if (havePermision(r.id)) {
+        router.push(
+          <ProtectedRoute
+            key={index + "as"}
+            component={r.component}
+            exact
+            layout={MainLayout}
+            path={r.href}
+          />
+        );
+        // }
 
         if (r.route != null) {
           r.route.forEach((rc, index) => {

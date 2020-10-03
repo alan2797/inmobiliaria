@@ -7,6 +7,8 @@ class Auth {
   }
   logOut(callback) {
     CookieService.remove("access_token");
+    localStorage.removeItem("permisos");
+    localStorage.removeItem("usuario");
     this.authenticated = false;
     callback();
   }

@@ -33,32 +33,30 @@ const PersonalCreate = (props) => {
   );
   const { showSnack } = useContext(MessageContext);
   const [expanded, setExpanded] = React.useState(false);
-  const [tipoPersonal, setTipoPersonal] = React.useState([]);
+  const [rol, setRol] = React.useState([]);
 
-  const getTipoPersonal = async () => {
+  const getRol = async () => {
     try {
-      const result = await RequestServer.GET(
-        "http://localhost:8000/api/web/tipo_personal"
-      );
+      const result = await RequestServer.GET("http://localhost:5000/api/rol");
       console.log(result.data);
       var array = [];
       for (let i = 0; i < result.data.data.length; i++) {
         let item = result.data.data[i];
         let data = {
-          id: item.idtipo_personal,
+          id: item.id,
           nombre: item.nombre,
         };
         array.push(data);
       }
-      formSchema.tipo_personal.opciones = array;
-      setTipoPersonal(array);
+      formSchemaUsuario.rolId.opciones = array;
+      setRol(array);
     } catch (error) {
       showSnack(error.message, error.type);
     }
   };
 
   useEffect(() => {
-    getTipoPersonal();
+    getRol();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -72,7 +70,7 @@ const PersonalCreate = (props) => {
     console.log(body);
     try {
       const rsp = await RequestServer.POST(
-        "http://localhost:8000/api/web/personal",
+        "http://localhost:5000/api/personal/create",
         body
       );
       showSnack(rsp.data.message, "success");

@@ -33,9 +33,14 @@ const schema = {
       maximum: 70,
     },
   },
-  tipo_personal: {
+  correo: {
     presence: { allowEmpty: false, message: V_REQUIRED },
-    numericality: { message: V_NUMERIC },
+    length: {
+      maximum: 70,
+    },
+  },
+  cargo: {
+    presence: { allowEmpty: false, message: V_REQUIRED },
   },
 };
 
@@ -49,7 +54,7 @@ const schemaUsuario = {
       maximum: 70,
     },
   },
-  rol: {
+  rolId: {
     presence: { allowEmpty: false, message: V_REQUIRED },
   },
 };

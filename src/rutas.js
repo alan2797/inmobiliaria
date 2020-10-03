@@ -21,6 +21,9 @@ import {
   ProveedorView,
   CompraView,
   FuncionalidadView,
+  PropietarioView,
+  InmuebleView,
+  ContratoView,
 } from "./views";
 import { InsumoCreateView } from "views/Modulo Produccion/Insumo/components";
 import { ProductoCreateView } from "views/Modulo Venta/Producto/components";
@@ -36,21 +39,20 @@ import {
   PedidoEditEstadoView,
 } from "views/Modulo Venta/pedido/components";
 import { FuncionalidadCreateView } from "views/Modulo Administracion/Funcionalidad/components";
-
+/////////contrto
+import { PropietarioCreateView } from "views/Modulo Contrato/Propietario/components";
+import { InmuebleCreateView } from "views/Modulo Contrato/Inmueble/components";
+import { ContratoCreateView } from "views/Modulo Contrato/Contrato/components";
 import {
   KEY_PERSONAL,
   KEY_ROL,
   KEY_USUARIO,
   KEY_FUNCIONALIDADES,
-  KEY_VENTA,
-  KEY_PRODUCTO,
-  KEY_PROVEEDOR,
   KEY_DASHBOARD,
   KEY_CLIENTE,
-  KEY_PRODUCCION,
-  KEY_INSUMO,
-  KEY_COMPRA,
-  KEY_PEDIDO,
+  KEY_PROPIETARIO,
+  KEY_INMUEBLES,
+  KEY_CONTRATOS,
 } from "permisos";
 export const pages = [
   {
@@ -119,6 +121,51 @@ export const pages = [
     ],
   },
   {
+    title: "Contratos",
+    icon: <AccountBoxIcon />,
+    children: [
+      {
+        id: KEY_PROPIETARIO,
+        title: "Propietario",
+        href: ROUTE_PAGE.PROPIETARIO.LISTAR,
+        icon: <AccountBoxIcon />,
+        component: PropietarioView,
+        route: [
+          {
+            href: ROUTE_PAGE.PROPIETARIO.CREAR,
+            component: PropietarioCreateView,
+          },
+        ],
+      },
+      {
+        id: KEY_INMUEBLES,
+        title: "Inmueble",
+        href: ROUTE_PAGE.INMUEBLE.LISTAR,
+        icon: <AccountBoxIcon />,
+        component: InmuebleView,
+        route: [
+          {
+            href: ROUTE_PAGE.INMUEBLE.CREAR,
+            component: InmuebleCreateView,
+          },
+        ],
+      },
+      {
+        id: KEY_CONTRATOS,
+        title: "Contratos Blockchain",
+        href: ROUTE_PAGE.CONTRATO.LISTAR,
+        icon: <AccountBoxIcon />,
+        component: ContratoView,
+        route: [
+          {
+            href: ROUTE_PAGE.CONTRATO.CREAR,
+            component: ContratoCreateView,
+          },
+        ],
+      },
+    ],
+  },
+  /* {
     title: "Produccion",
     icon: <ShopIcon />,
     children: [
@@ -243,5 +290,5 @@ export const pages = [
         ],
       },
     ],
-  },
+  },*/
 ];

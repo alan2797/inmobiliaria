@@ -1,26 +1,20 @@
 export const headCells = [
   {
-    key: "idusuario",
+    key: "id",
     numeric: false,
     disablePadding: false,
     label: "#",
   },
   {
-    key: "email",
+    key: "username",
     numeric: false,
     disablePadding: false,
-    label: "Correo",
+    label: "Usuario",
   },
   {
-    key: "fkidpersonal",
+    key: "personal",
     numeric: false,
     disablePadding: false,
     label: "Personal",
-  },
-  {
-    key: "created_at",
-    numeric: false,
-    disablePadding: false,
-    label: "Día de registro",
   },
 ];

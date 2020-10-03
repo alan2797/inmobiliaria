@@ -26,3 +26,8 @@ export { default as FichaProduccionView } from "./Modulo Produccion/FichaProducc
 //Modulo Compra
 export { default as ProveedorView } from "./Modulo Compra/Proveedor";
 export { default as CompraView } from "./Modulo Compra/Compra";
+
+//modulo Contreatos
+export { default as PropietarioView } from "./Modulo Contrato/Propietario";
+export { default as InmuebleView } from "./Modulo Contrato/Inmueble";
+export { default as ContratoView } from "./Modulo Contrato/Contrato";
