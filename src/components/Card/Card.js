@@ -7,8 +7,9 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-import { Add } from "@material-ui/icons";
+import { Add, Check } from "@material-ui/icons";
 import Tooltip from "@material-ui/core/Tooltip";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,27 +39,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardView() {
+export const CardView = (props) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
+  const { data } = props;
   return (
     <Card className={classes.root}>
-      <CardHeader title="Pan Casero" subheader="Normal" />
-      <CardMedia
-        className={classes.media}
-        image="https://www.bakels.com.ec/wp-content/uploads/sites/32/2020/09/Bakels-panilisto-pan-casero.jpg"
-        title="Paella dish"
-      />
-      <CardActions disableSpacing>
-        <Typography variant="overline">Precio: 2 Bs</Typography>
-
-        <Tooltip title="Agregar Insumo" aria-label="add">
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {data.caracteristica.nombre.substring(0, 1)}
+          </Avatar>
+        }
+        action={
           <IconButton aria-label="agregar" className={classes.leftIcon}>
-            <Add style={{ color: "green" }} />
+            <Check style={{ color: "blue" }} />
           </IconButton>
-        </Tooltip>
-      </CardActions>
+        }
+        title={<h3>{data.caracteristica.nombre}</h3>}
+        subheader={data.descripcion}
+      />
     </Card>
   );
-}
+};

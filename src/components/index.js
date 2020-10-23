@@ -6,4 +6,6 @@ export * from "./Form/FormInput.tsx";
 export { default as EnhancedTable } from "./Table";
 export * from "./Buttom";
 export * from "./Modal";
+export * from "./Step";
+export * from "./Card";
 //export * from "./Map";

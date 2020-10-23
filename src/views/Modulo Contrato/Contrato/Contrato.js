@@ -29,7 +29,7 @@ const Contrato = ({ history }) => {
   );
 
   const web3 = new Web3("http://127.0.0.1:7545");
-  const contractAddr = "0x6d0b958ab317186CFb743fB6D7c79F0c09E91C18";
+  const contractAddr = "0x32b701a843188E4EAc5954caAF659404835f5006";
 
   const listaContratos = new web3.eth.Contract(abiContrato, contractAddr);
   const fetchData = async () => {
@@ -40,13 +40,15 @@ const Contrato = ({ history }) => {
     for (let i = 0; i < result.length; i++) {
       let item = result[i];
       let data = {
-        id: i,
+        id: i+1,
+        fechaInicio: item.fecha_inicio,
+        fechaFinal: item.fecha_final,
         tipo: item.tipo,
-        duracion: item.duracion,
         valor: item.valor,
-        fechaFirma: item.fecha_firma,
-        fechaVencimiento: item.fecha_vencimiento,
-        estado: "Proceso",
+        moneda: item.moneda,
+        tipoPago: item.tipo_pago,
+        entregaPago: item.entrega_pago,
+        estado: item.estado,
       };
       array.push(data);
       console.log(item);

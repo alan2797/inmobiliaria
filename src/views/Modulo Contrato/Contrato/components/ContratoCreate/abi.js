@@ -1,139 +1,175 @@
 export const abiContrato = [
   {
-    constant: true,
-    inputs: [
+    "constant": true,
+    "inputs": [
       {
-        name: "",
-        type: "uint256",
-      },
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: "contratosData",
-    outputs: [
+    "name": "contratosData",
+    "outputs": [
       {
-        name: "tipo",
-        type: "string",
+        "name": "fecha_inicio",
+        "type": "string"
       },
       {
-        name: "duracion",
-        type: "string",
+        "name": "fecha_final",
+        "type": "string"
       },
       {
-        name: "valor",
-        type: "uint256",
+        "name": "tipo_pago",
+        "type": "string"
       },
       {
-        name: "moneda",
-        type: "string",
+        "name": "tipo",
+        "type": "string"
       },
       {
-        name: "fecha_firma",
-        type: "string",
+        "name": "entrega_pago",
+        "type": "string"
       },
       {
-        name: "fecha_vencimiento",
-        type: "string",
+        "name": "valor",
+        "type": "uint256"
       },
       {
-        name: "cliente",
-        type: "string",
+        "name": "moneda",
+        "type": "string"
       },
       {
-        name: "inmueble",
-        type: "uint256",
+        "name": "estado",
+        "type": "string"
       },
+      {
+        "name": "inmueble",
+        "type": "uint256"
+      },
+      {
+        "name": "propietario",
+        "type": "uint256"
+      },
+      {
+        "name": "cliente",
+        "type": "uint256"
+      }
     ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    constant: false,
-    inputs: [
+    "constant": false,
+    "inputs": [
       {
-        name: "tipo",
-        type: "string",
+        "name": "fecha_inicio",
+        "type": "string"
       },
       {
-        name: "duracion",
-        type: "string",
+        "name": "fecha_final",
+        "type": "string"
       },
       {
-        name: "valor",
-        type: "uint256",
+        "name": "tipo_pago",
+        "type": "string"
       },
       {
-        name: "moneda",
-        type: "string",
+        "name": "tipo",
+        "type": "string"
       },
       {
-        name: "fecha_firma",
-        type: "string",
+        "name": "entrega_pago",
+        "type": "string"
       },
       {
-        name: "fecha_vencimiento",
-        type: "string",
+        "name": "valor",
+        "type": "uint256"
       },
       {
-        name: "cliente",
-        type: "string",
+        "name": "moneda",
+        "type": "string"
       },
       {
-        name: "inmueble",
-        type: "uint256",
+        "name": "estado",
+        "type": "string"
       },
+      {
+        "name": "inmueble",
+        "type": "uint256"
+      },
+      {
+        "name": "propietario",
+        "type": "uint256"
+      },
+      {
+        "name": "cliente",
+        "type": "uint256"
+      }
     ],
-    name: "setContrato",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "setContrato",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    constant: true,
-    inputs: [],
-    name: "getContratos",
-    outputs: [
+    "constant": true,
+    "inputs": [],
+    "name": "getContratos",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            name: "tipo",
-            type: "string",
+            "name": "fecha_inicio",
+            "type": "string"
           },
           {
-            name: "duracion",
-            type: "string",
+            "name": "fecha_final",
+            "type": "string"
           },
           {
-            name: "valor",
-            type: "uint256",
+            "name": "tipo_pago",
+            "type": "string"
           },
           {
-            name: "moneda",
-            type: "string",
+            "name": "tipo",
+            "type": "string"
           },
           {
-            name: "fecha_firma",
-            type: "string",
+            "name": "entrega_pago",
+            "type": "string"
           },
           {
-            name: "fecha_vencimiento",
-            type: "string",
+            "name": "valor",
+            "type": "uint256"
           },
           {
-            name: "cliente",
-            type: "string",
+            "name": "moneda",
+            "type": "string"
           },
           {
-            name: "inmueble",
-            type: "uint256",
+            "name": "estado",
+            "type": "string"
           },
+          {
+            "name": "inmueble",
+            "type": "uint256"
+          },
+          {
+            "name": "propietario",
+            "type": "uint256"
+          },
+          {
+            "name": "cliente",
+            "type": "uint256"
+          }
         ],
-        name: "",
-        type: "tuple[]",
-      },
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
 ];

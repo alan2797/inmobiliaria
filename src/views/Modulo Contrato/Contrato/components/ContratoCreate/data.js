@@ -12,3 +12,10 @@ export const tipoPersonalData = [
     nombre: "Agente",
   },
 ];
+export const nombreSteps = [
+  "Tipo de contrato y Rellenar datos del inmueble",
+  "Datos del propietario",
+  "datos del inquilino",
+  "Duracion y formas de pago del contrato",
+  "Previsualizacion del contrato",
+];

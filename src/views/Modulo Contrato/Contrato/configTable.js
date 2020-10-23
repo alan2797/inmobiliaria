@@ -6,16 +6,22 @@ export const headCells = [
     label: "#",
   },
   {
+    key: "fechaInicio",
+    numeric: false,
+    disablePadding: false,
+    label: "Fecha de Inicio",
+  },
+  {
+    key: "fechaFinal",
+    numeric: false,
+    disablePadding: false,
+    label: "Fecha de final del contrato",
+  },
+  {
     key: "tipo",
     numeric: false,
     disablePadding: false,
     label: "Tipo Contrato",
-  },
-  {
-    key: "duracion",
-    numeric: false,
-    disablePadding: false,
-    label: "duracion",
   },
   {
     key: "valor",
@@ -24,16 +30,22 @@ export const headCells = [
     label: "Valor contrato",
   },
   {
-    key: "fechaFirma",
+    key: "moneda",
     numeric: false,
     disablePadding: false,
-    label: "Fecha de firma",
+    label: "Moneda",
   },
   {
-    key: "fechaVencimiento",
+    key: "tipoPago",
     numeric: false,
     disablePadding: false,
-    label: "Fecha de Vencimiento",
+    label: "Tipo de pago",
+  },
+  {
+    key: "entregaPago",
+    numeric: false,
+    disablePadding: false,
+    label: "Entrega de pago",
   },
   {
     key: "estado",
